@@ -5,6 +5,12 @@ function system_update(){
   apt-get update
   success "System updated";
 }
+function ssh_setup_keys(){
+  log "Creating SSH keys...";
+  ssh-keygen -t rsa
+  ssh-keygen -p -m PEM -f ~/.ssh/id_rsa
+  success "SSH keys created";
+}
 function docker_setup() {
   log "Installing docker...";
   apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common

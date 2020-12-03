@@ -20,6 +20,9 @@ fi
 system_update
 
 # Private keys
+if [ "$SSH_KEYS" = true ]; then
+  ssh_setup_keys
+fi
 
 # Allow/Disallow password authentication
 # User setup
