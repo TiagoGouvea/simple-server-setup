@@ -51,9 +51,15 @@ function docker_move_path(){
   fi
 }
 function repo_clone(){
+  PATH=$($1 | cut -d'/' -f 2 | cut -d'.' -f 1)
+  echo "PATH: $PATH";
   log "Cloning repository...";
-  git clone $1
-  success "Repository cloned";
+  if [ ! -d "$PATH" ]; then
+    git clone $1
+    success "Repository cloned";
+  else
+    success "Repository already cloned";
+  fi
 }
 function log(){
   echo "$1";
