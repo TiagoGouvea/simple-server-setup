@@ -38,10 +38,10 @@ if [ "$DOCKER_COMPOSE" = true ]; then
 fi
 
 if [ "$DOCKER_MOVE_PATH" ]; then
-  docker_move_folder $DOCKER_MOVE_PATH
+  docker_move_path "$DOCKER_MOVE_PATH"
 fi
 
 # Clone repository
 if [ "$REPO" = true ]; then
-  repo_clone $REPO_URL
+  repo_clone "$REPO_URL"
 fi
