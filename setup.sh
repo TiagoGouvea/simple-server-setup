@@ -8,9 +8,9 @@ source helpers.sh
 # Load config
 
 # Check if running as root
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root"
+    exit
 fi
 
 #### Run setup ####
@@ -19,9 +19,9 @@ fi
 system_update
 
 # Private keys
+
 # Allow/Disallow password authentication
 # User setup
-
 
 # Docker setup
 docker_setup
@@ -30,4 +30,6 @@ docker_setup
 docker_compose_setup
 
 # Clone repository
-
+if [ "$REPO" = true ]; then
+  repo_clone $REPO_URL
+fi
