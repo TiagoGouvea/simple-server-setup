@@ -43,7 +43,7 @@ function docker_move_path(){
   if [ ! -d "$DOCKER_MOVE_PATH" ]; then
     sudo service docker stop
     sudo mv /var/lib/docker /var/lib/docker~
-    sudo mkdir "$DOCKER_MOVE_PATH"
+    sudo mkdir $DOCKER_MOVE_PATH
     sudo chmod 0711 "$DOCKER_MOVE_PATH"
     sudo ln -s "$DOCKER_MOVE_PATH" /var/lib/docker
     sudo service docker start
@@ -64,12 +64,13 @@ function base_path_open(){
 function repo_clone(){
   PATH=$(echo "$REPO_URL" | cut -d'/' -f 2 | cut -d'.' -f 1)
   log "Cloning repository...";
-  if [ ! -d "$PATH" ]; then
-    git clone "$REPO_URL"
-    success "Repository cloned";
-  else
-    info "Repository already cloned";
-  fi
+#  if [ ! -d "$PATH" ]; then
+    /usr/bin/git clone "$REPO_URL" || true
+    /usr/bin/git clone "git@github.com:app-masters/carers.git"
+#    success "Repository cloned";
+#  else
+#    info "Repository already cloned";
+#  fi
 }
 function log(){
   echo "$1";
