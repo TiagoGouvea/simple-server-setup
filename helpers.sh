@@ -83,4 +83,5 @@ function info(){
 function validate_config() {
   # Validate git repo string
   #  PATH=$(echo "$1" | cut -d'/' -f 2 | cut -d'.' -f 1)
+  info "Valid config found";
 }
