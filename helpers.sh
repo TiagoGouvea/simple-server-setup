@@ -12,8 +12,8 @@ function ssh_setup_keys(){
   else
     ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa
     ssh-keygen -p -m PEM -N '' -f ~/.ssh/id_rsa
+    success "SSH keys created";
   fi
-  success "SSH keys created";
 }
 function docker_setup() {
   log "Installing docker...";
@@ -35,6 +35,20 @@ function docker_compose_setup() {
   chmod +x /usr/local/bin/docker-compose
   docker-compose --version
   success "Docker composer installed";
+}
+function docker_move_path(){
+  log "Moving docker folder...";
+  if [ ! -d "$1" ]; then
+    sudo service docker stop
+    sudo mv /var/lib/docker /var/lib/docker~
+    sudo mkdir $1
+    sudo chmod 0711 $1
+    sudo ln -s $1 /var/lib/docker
+    sudo service docker start
+    success "Docker folder moved";
+  else
+    success "Docker folder already exists";
+  fi
 }
 function repo_clone(){
   log "Cloning repository...";

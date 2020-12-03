@@ -2,6 +2,7 @@
 
 # Docker
 DOCKER=true
+DOCKER_MOVE_PATH=/mnt/disks/disk2/docker/
 
 # Docker Compose
 DOCKER_COMPOSE=true
