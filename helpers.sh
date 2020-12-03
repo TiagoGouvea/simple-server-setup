@@ -61,9 +61,9 @@ function base_path_open(){
 }
 function repo_clone(){
   PATH=$(echo "$1" | cut -d'/' -f 2 | cut -d'.' -f 1)
-  echo "PATH: $PATH";
   log "Cloning repository...";
   if [ ! -d "$PATH" ]; then
+    set -ex
     git clone $1
     success "Repository cloned";
   else
@@ -78,4 +78,10 @@ function success(){
 }
 function info(){
   echo "$1";
+}
+
+
+function validate_config() {
+  # Validate git repo string
+  #  PATH=$(echo "$1" | cut -d'/' -f 2 | cut -d'.' -f 1)
 }

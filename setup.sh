@@ -8,6 +8,8 @@ source helpers.sh
 # Load config
 source config.sh
 
+validate_config
+
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then
     echo "Please run as root"
