@@ -3,6 +3,7 @@
 function system_update(){
   log "Running system update...";
   apt-get update
+  apt-get install -y git openssh
   success "System updated";
 }
 function ssh_setup_keys(){
