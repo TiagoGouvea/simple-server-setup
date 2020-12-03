@@ -44,7 +44,7 @@ fi
 
 ## Project related ##
 if [ "$BASE_PATH" ]; then
-  RUN_PATH=PWD
+  RUN_PATH=${PWD}
   base_path_open "$BASE_PATH"
 fi
 
