@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Load dependences
+# Load dependencies
 source helpers.sh
 
 # Check for config.sh
@@ -24,10 +24,14 @@ system_update
 # User setup
 
 # Docker setup
-docker_setup
+if [ "$DOCKER" = true ]; then
+  docker_setup
+fi
 
 # Docker compose setup
-docker_compose_setup
+if [ "$DOCKER_COMPOSE" = true ]; then
+  docker_compose_setup
+fi
 
 # Clone repository
 if [ "$REPO" = true ]; then
