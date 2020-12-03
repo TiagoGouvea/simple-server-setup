@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+# Load dependences
+source helpers.sh
 
 # Check for config.sh
 
@@ -28,5 +31,3 @@ docker_compose_setup
 
 # Clone repository
 
-
-source helpers.sh

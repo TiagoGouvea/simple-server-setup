@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function system_update(){
   apt-get update
