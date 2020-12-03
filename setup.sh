@@ -6,6 +6,7 @@ source helpers.sh
 # Check for config.sh
 
 # Load config
+source config.sh
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then
