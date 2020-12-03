@@ -41,7 +41,17 @@ if [ "$DOCKER_MOVE_PATH" ]; then
   docker_move_path "$DOCKER_MOVE_PATH"
 fi
 
+
+## Project related ##
+if [ "$BASE_PATH" ]; then
+  RUN_PATH=PWD
+  base_path_open "$BASE_PATH"
+fi
+
 # Clone repository
 if [ "$REPO" = true ]; then
   repo_clone "$REPO_URL"
 fi
+
+
+cd $RUN_PATH

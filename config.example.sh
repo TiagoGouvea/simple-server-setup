@@ -13,6 +13,9 @@ DOCKER_COMPOSE=true
 # SSH Keys
 SSH_KEYS=true
 
+# Base Path
+BASE_PATH=/mnt/disks/disk2/
+
 # Repository
 REPO=true
 REPO_URL=https://github.com/your-nickname/your-repo.git

@@ -47,8 +47,17 @@ function docker_move_path(){
     sudo service docker start
     success "Docker folder moved";
   else
-    success "Docker folder already exists";
+    info "Docker folder already exists";
   fi
+}
+function base_path_open(){
+  log "Opening base path...";
+  if [ ! -d "$1" ]; then
+    mkdir "$1";
+    success "Base path ($1) created";
+  fi
+  cd "$1" || return
+  success "Base path opened";
 }
 function repo_clone(){
   PATH=$(echo "$1" | cut -d'/' -f 2 | cut -d'.' -f 1)
@@ -58,7 +67,7 @@ function repo_clone(){
     git clone $1
     success "Repository cloned";
   else
-    success "Repository already cloned";
+    info "Repository already cloned";
   fi
 }
 function log(){
