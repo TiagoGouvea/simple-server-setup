@@ -8,6 +8,8 @@ source helpers.sh
 # Load config
 source config.sh
 
+set -ex
+
 validate_config
 
 # Check if running as root
@@ -17,6 +19,8 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 #### Run setup ####
+
+log "Running as ${USER}"
 
 # Update system
 system_update
