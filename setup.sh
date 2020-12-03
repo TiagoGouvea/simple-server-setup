@@ -12,6 +12,11 @@ set -ex
 
 validate_config
 
+if [ ! -z "$1" ]; then
+  $1
+  return;
+fi
+
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then
     echo "Please run as root"
