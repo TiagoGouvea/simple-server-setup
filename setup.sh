@@ -8,8 +8,6 @@ source helpers.sh
 # Load config
 source config.sh
 
-set -ex
-
 validate_config
 
 if [ ! -z "$1" ]; then
@@ -49,7 +47,7 @@ if [ "$DOCKER_COMPOSE" = true ]; then
 fi
 
 if [ "$DOCKER_MOVE_PATH" ]; then
-  docker_move_path "$DOCKER_MOVE_PATH"
+  docker_move_path
 fi
 
 

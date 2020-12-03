@@ -40,12 +40,12 @@ function docker_compose_setup() {
 }
 function docker_move_path(){
   log "Moving docker folder...";
-  if [ ! -d "$1" ]; then
+  if [ ! -d "$DOCKER_MOVE_PATH" ]; then
     sudo service docker stop
     sudo mv /var/lib/docker /var/lib/docker~
-    sudo mkdir $1
-    sudo chmod 0711 $1
-    sudo ln -s $1 /var/lib/docker
+    sudo mkdir "$DOCKER_MOVE_PATH"
+    sudo chmod 0711 "$DOCKER_MOVE_PATH"
+    sudo ln -s "$DOCKER_MOVE_PATH" /var/lib/docker
     sudo service docker start
     success "Docker folder moved";
   else
@@ -62,10 +62,10 @@ function base_path_open(){
   success "Base path opened";
 }
 function repo_clone(){
-  PATH=$(echo "$1" | cut -d'/' -f 2 | cut -d'.' -f 1)
+  PATH=$(echo "$REPO_URL" | cut -d'/' -f 2 | cut -d'.' -f 1)
   log "Cloning repository...";
   if [ ! -d "$PATH" ]; then
-    /usr/bin/git clone $1
+    git clone "$REPO_URL"
     success "Repository cloned";
   else
     info "Repository already cloned";
