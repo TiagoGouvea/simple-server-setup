@@ -1,4 +1,4 @@
-
+#!/bin/sh
 
 # Check for config.sh
 
@@ -13,7 +13,7 @@ fi
 #### Run setup ####
 
 # Update system
-apt-get update
+system_update
 
 # Private keys
 # Allow/Disallow password authentication
