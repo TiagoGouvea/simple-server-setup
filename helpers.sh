@@ -7,8 +7,12 @@ function system_update(){
 }
 function ssh_setup_keys(){
   log "Creating SSH keys...";
-  ssh-keygen -t rsa
-  ssh-keygen -p -m PEM -f ~/.ssh/id_rsa
+  if [ -f "$HOME/.ssh/id_rsa" ]; then
+    info "Keys already exists"
+  else
+    ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa
+    ssh-keygen -p -m PEM -N '' -f ~/.ssh/id_rsa
+  fi
   success "SSH keys created";
 }
 function docker_setup() {
@@ -41,5 +45,8 @@ function log(){
   echo "$1";
 }
 function success(){
+  echo "$1";
+}
+function info(){
   echo "$1";
 }
