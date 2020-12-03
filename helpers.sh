@@ -63,8 +63,7 @@ function repo_clone(){
   PATH=$(echo "$1" | cut -d'/' -f 2 | cut -d'.' -f 1)
   log "Cloning repository...";
   if [ ! -d "$PATH" ]; then
-    set -ex
-    git clone $1
+    /usr/bin/git clone $1
     success "Repository cloned";
   else
     info "Repository already cloned";
