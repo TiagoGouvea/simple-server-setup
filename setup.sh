@@ -12,7 +12,7 @@ validate_config
 
 if [ ! -z "$1" ]; then
   $1
-  return;
+  exit;
 fi
 
 # Check if running as root

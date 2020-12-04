@@ -64,13 +64,14 @@ function base_path_open(){
 function repo_clone(){
   PATH=$(echo "$REPO_URL" | cut -d'/' -f 2 | cut -d'.' -f 1)
   log "Cloning repository...";
-#  if [ ! -d "$PATH" ]; then
-    /usr/bin/git clone "$REPO_URL" || true
-    /usr/bin/git clone "git@github.com:app-masters/carers.git"
-#    success "Repository cloned";
-#  else
-#    info "Repository already cloned";
-#  fi
+  if [ ! -d "$PATH" ]; then
+    git clone "git@github.com:app-masters/carers.git"
+    success "Repository cloned";
+  else
+    info "Repository already exists, pulling..."
+    git pull
+    success "Repository updated";
+  fi
 }
 function log(){
   echo "$1";
